@@ -1,0 +1,39 @@
+/*p{
+    color: red;
+}
+h1{
+    color: blue;
+}
+main{
+    background-color: green;
+}
+body{
+    background-color: black;
+}
+p{
+    color:  azure;
+}
+h1{
+    color: violet;
+}
+main{
+    background-color: yellowgreen;
+}
+body{
+    background-color: white;
+}*/
+
+/*p{
+    background-color:  yellow;
+    color: white;
+}
+a{
+    color: inherit
+}*/
+
+.clase{
+    color: rgb(91, 172, 64);
+}
+#indentificador{
+    color: coral
+}

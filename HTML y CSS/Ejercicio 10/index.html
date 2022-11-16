@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+    <style>
+        .primero{
+            border: 1px solid;
+            padding: 10px;
+        }
+        .segundo{
+            margin-top: 10px;
+            border: 1px solid;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Informacion sobre el producto</h1>
+    <form action="">
+        <div class="primero">
+            <h2>Nombre</h2>
+            <input type="text">
+            <h2>Descripcion</h2>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <h2>Foto <input type="file"></h2>
+            <input type="checkbox">Anadir controlador de Visitas
+        </div>
+        <div class="segundo">
+            <h2>Precio <input type="number"> $ | impuestos <input type="text" list="lista"></h2>
+            <input type="radio" name="respuesta">Ninguno
+            <input type="radio" name="respuesta">Transporte Gratuito
+            <input type="radio" name="respuesta">Descuento
+            <datalist id="lista">
+                <option value="4%"></option>
+                <option value="7%"></option>
+                <option value="16%"></option>
+                <option value="25%"></option>
+            </datalist>
+        </div>
+    </form>
+</body>
+
+</html>

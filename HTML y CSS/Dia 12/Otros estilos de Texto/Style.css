@@ -1,0 +1,15 @@
+p{
+    text-align: justify;
+    
+}
+
+.texto{
+    text-align: left;
+    line-height: 50px ;
+    text-decoration:underline;
+    text-transform: lowercase;
+    text-indent: 2em;
+    letter-spacing: 10px;
+    word-spacing: 20px;
+    font:bold
+}

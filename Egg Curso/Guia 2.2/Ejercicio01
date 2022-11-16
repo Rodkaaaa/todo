@@ -1,0 +1,21 @@
+function Ejercicio01(num){
+    do {
+        if(num > 0 && num <=10){
+            console.log("numero dentro del rango");
+            break;
+        }else{
+            console.log("ingrese un numero valido")
+            break;
+        }
+    }while (num > 0 && num <=10);
+}
+
+Ejercicio01(10);
+
+function Ejercicio02(num){
+    let sum;
+    do {
+        
+        
+    } while (num>sum);
+}

@@ -1,0 +1,42 @@
+body{
+    border-left: solid blue 5px;
+}
+h1{
+    margin-left:15px;
+}
+.p1{
+    margin: 25px
+}
+.p2{
+    margin: 25px
+}
+.p3{
+    margin: 25px
+}
+.p4{
+    margin: 25px
+}
+
+.p1 b{
+    font-size: 18px;
+}
+.p1 i{
+    color: blue;
+    font-size: medium;
+}
+.p2 i{
+    color: blue;
+    font-size: medium;
+}
+.p2 sup{
+    color: blue;
+    margin: .2em;
+}
+.p3 i{
+    color: blue;
+    font-size: medium;
+}
+.p3 sup{
+    color: blue;
+    margin: .2em;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa</title>
+</head>
+<body>
+    <div id="mapa" style="height: 500px; width: 100%;"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgZZK8umUqJn8d5CoIZqWPJ_qtMfqD9q0&callback=initMap" async defer>    
+    </script>
+    <script>
+        function initMap(){
+            mapa = new google.maps.Map(document.getElementById("mapa"), {center: {lat: -33.4438409, lng: -70.650278 },zoom: 18});
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+CREATE SCHEMA IF NOT EXISTS `minimarket2`;
+USE `minimarket2` ;
+
+
+CREATE TABLE IF NOT EXISTS `minimarket2`.`tipoProducto` (
+  `idtipoProducto` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idtipoProducto`));
+
+
+
+
+CREATE TABLE IF NOT EXISTS `minimarket2`.`Producto` (
+  `idProcto` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `stock` INT NOT NULL,
+  `precio` INT NOT NULL,
+  `tipoProducto_idtipoProducto` INT NOT NULL,
+  PRIMARY KEY (`idProcto`),
+  INDEX `fk_Procto_tipoProducto_idx` (`tipoProducto_idtipoProducto` ASC) VISIBLE,
+  CONSTRAINT `fk_Procto_tipoProducto`
+    FOREIGN KEY (`tipoProducto_idtipoProducto`)
+    REFERENCES `minimarket2`.`tipoProducto` (`idtipoProducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+use `minimarket2`;
+select * from tipoproducto;
+-- INSERT INTO `minimarket2`.`tipoproducto` (`idtipoProducto`, `tipo`) VALUES ('1', 'Vegetales');
+INSERT INTO `minimarket2`.`tipoproducto` (`idtipoProducto`, `tipo`) VALUES ('2', 'Lacteos');
+INSERT INTO `minimarket2`.`tipoproducto` (`idtipoProducto`, `tipo`) VALUES ('3', 'abarrotes');
+INSERT INTO `minimarket2`.`tipoproducto` (`idtipoProducto`, `tipo`) VALUES ('4', 'Productos de limpieza');
+INSERT INTO `minimarket2`.`tipoproducto` (`idtipoProducto`, `tipo`) VALUES ('5', 'Embutidos');
+INSERT INTO `minimarket2`.`tipoproducto` (`idtipoProducto`, `tipo`) VALUES ('6', 'Carnes');
+INSERT INTO `minimarket2`.`tipoproducto` (`idtipoProducto`, `tipo`) VALUES ('7', 'Bebestibles');
+
+select * from producto;
+
+INSERT INTO `minimarket2`.`producto` (`idProcto`, `nombre`, `descripcion`, `stock`, `precio`, `tipoProducto_idtipoProducto`) 
+VALUES ('1', 'leche', 'leche 1lt', '50', '1000', '2');
+
+select tipo as `Categoria`, nombre as `Nombre`, descripcion as `Descripcion`, sum(stock * precio) as `Total $`
+from producto
+inner join tipoproducto
+where producto.tipoProducto_idtipoProducto = tipoproducto.idtipoProducto;
+
+UPDATE `minimarket2`.`producto` SET `descripcion` = 'leche 1,5lt' WHERE (`idProcto` = '1');
+UPDATE `minimarket2`.`producto` SET `descripcion` = 'leche 1,5lt' WHERE (`idProcto` = '1');
+
+INSERT INTO `minimarket2`.`producto` (`nombre`, `descripcion`, `stock`, `precio`, `tipoProducto_idtipoProducto`) VALUES ('tomate', 'bolsa 1kg', '20', '800', '1');
+INSERT INTO `minimarket2`.`producto` (`idProcto`, `nombre`, `descripcion`, `stock`, `precio`, `tipoProducto_idtipoProducto`) VALUES ('3', 'jamonada', '1/4', '40', '1500', '5');
+UPDATE `minimarket2`.`producto` SET `descripcion` = 'bolsa 2kg' WHERE (`idProcto` = '2');
+
+INSERT INTO `minimarket2`.`producto` (`idProcto`, `nombre`, `descripcion`, `stock`, `precio`, `tipoProducto_idtipoProducto`) VALUES ('4', 'cebolla', '1 un', '50', '500', '1');
+INSERT INTO `minimarket2`.`producto` (`idProcto`, `nombre`, `descripcion`, `stock`, `precio`, `tipoProducto_idtipoProducto`) VALUES ('6', 'zanahoria', '1 un', '70', '800', '1');
+UPDATE `minimarket2`.`producto` SET `nombre` = 'papas', `descripcion` = 'saco 1kg', `stock` = '20', `precio` = '1000' WHERE (`idProcto` = '6');
+DELETE FROM `minimarket2`.`producto` WHERE (`idProcto` = '6');
+
+-- Desea un informe anual sobre ganancias.
+-- venta de productos
+
+
+-- select idboleta , anioventa , totalAnual(suma total de todas las ventas del anio)
+-- where fecha like `%2022`
+-- DD-MM-YYYY FORMATO DE FECHA
+

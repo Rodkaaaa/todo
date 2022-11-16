@@ -1,0 +1,29 @@
+Ventajas de los frameworks web
+1 – Documentación y comunidad.
+La cantidad de documentación que podremos encontrar 
+sobre un framework web, suele ser enorme y además con una gran 
+comunidad detrás, respondiendo preguntas y desarrollando nuevas funcionalidades.
+
+2 – Reutilización del código.
+Uno de los puntos fuertes del los frameworks web es la modularidad de su 
+código y la capacidad para poder hacer múltiples proyectos con el mismo código, 
+cambiando simplemente los textos.
+
+3 – Arquitectura y metodología.
+La mayoría de frameworks web del mercado usan arquitecturas y metodologías actuales,
+ como el Modelo-Vista-Controlador.
+
+4 – Plantillas web.
+Las plantillas facilitan mucho el trabajo de los desarrolladores web y los frameworks no se 
+quedan atrás en esto. Algunos frameworks Frontend como Bootstrap cuentan con grandes cantidades de
+ plantillas y componentes desarrollados por su extensa comunidad.
+
+5 – Seguridad web.
+Los frameworks web suelen contar con medidas de seguridad 
+para proteger nuestros datos y los de nuestros clientes, ayudando en gran medida en uno de 
+los temas que lleva de cabeza a grandes empresas de servicios web desde el 2017.
+
+6 – Posicionamiento en motores de búsqueda.
+El posicionamiento web SEO on page es muy importante si queremos lograr aparecer 
+en las primeras posiciones de buscadores como Google. Por eso muchos frameworks web 
+ya implementan en su estructura código para poder lograrlo más fácilmente.

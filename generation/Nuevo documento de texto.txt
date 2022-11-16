@@ -1,0 +1,39 @@
+Escenario 3 
+
+Contexto del Compañero 1 (Supervisor):
+
+Eres un supervisor y has tenido dificultad para contratar empleados confiables. 
+Estás muy contento con David como empleado. Él nunca llega tarde a su turno y siempre tiene una 
+buena actitud. Sin embargo, ha sido muy difícil hacer un horario en el que todos estén de acuerdo. 
+Una de tus empleadas está de licencia por maternidad y otra está cuidando de un pariente que está enfermo. 
+Para cubrirlas, pides que los demás compañeros trabajen turnos más largos. 
+
+
+
+Tu objetivo es escuchar a David y responder adecuadamente. 
+
+preguntar si cuede cumplir horas extras, si es que me da una excusa responder de forma empatica y educada
+
+
+rol 2
+
+bien echo a no recibir el mensaje , se saco los audifonos y mirar a otro lado y no estar
+atento a la camara , le da una solucion para estar en algun lugar que no lu pueda molestar
+para consentrarce en la entrevista, el debil no quiere , el fuerte aun busca , apaga la 
+la camara y se desconecta
+
+E = (A+4B+C)/6
+
+
+Definir el problema
+Elaborar soluciones
+Hacer tu investigación, pero no intentar reinventar la rueda 
+Pensar y elegir una solución
+Entrar en acción
+Enfocarse en lo que eres bueno 
+Respetar tu tiempo
+
+tener un orden 
+
+
+podría ser como waze, y la gente suba posiciones de cajeros, y si 5 usuarios ponen en el mismo punto gps es data verdadera

@@ -1,0 +1,38 @@
+body {
+    height: 500px;
+    width: 500px;
+    border-left: 10px blue solid;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 500px;
+    height: 300px;
+    border-collapse: collapse;
+    margin: 25px;
+
+}
+
+th {
+    background-color: aquamarine;
+}
+
+img {
+    margin: 5px;
+    padding: 5px;
+}
+
+span {
+    text-decoration: line-through;
+}
+
+a {
+    margin: 5px;
+}
+
+p {
+    margin: 10px;
+}

@@ -1,0 +1,13 @@
+table{
+    width: 200px;
+    height: 100px;
+    border-collapse: separate;
+    text-align: center;
+    border-spacing: 5px;
+}
+th{
+    background-color: greenyellow;
+}
+td{
+    background-color: grey;
+}

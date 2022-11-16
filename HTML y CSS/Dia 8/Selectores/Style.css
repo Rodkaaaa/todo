@@ -1,0 +1,58 @@
+/* *{
+    font-size: 85px;
+} */
+/* h1{
+    background-color: indigo;
+}
+h2{
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   font-size: 80px; 
+}
+p{
+    text-align: center;    
+} */
+
+/* h1,h2,h3,h4,h5,h6,p,a{
+    color: red;
+    background-color: black;
+} */
+
+/* #p1{
+    color: white;
+    background-color: black;
+}
+.p2{
+    color: red;
+    background-color: black;
+} */
+/* h1>a{
+    color: coral;
+    font-size: 46px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: blue;
+}
+
+p>a{
+    color: firebrick;
+    font-size: 72px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rebeccapurple;
+ } */
+ 
+/* h2 + h3{
+    color: fuchsia;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+} */
+
+/* [class]{
+    color: red;
+    font-size: 48px;
+    background-color: fuchsia;
+} */
+
+[class=referencia]{
+    color: red;
+    font-size: 48px;
+    background-color: fuchsia;
+}

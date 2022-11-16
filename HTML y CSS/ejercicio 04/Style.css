@@ -1,0 +1,17 @@
+table{
+    width: 500px;
+    height: 500px;
+    text-align: center;
+}
+th{
+    font-weight: bold;
+    background-color: tomato;
+    font-size: 24px;
+    padding: 5px;
+}
+td{
+    background-color: aqua;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}

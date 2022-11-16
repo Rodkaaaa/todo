@@ -1,0 +1,35 @@
+a{
+    text-decoration: none;
+}
+a:link{
+    color:red
+}
+a:visited{
+    color:aqua;
+}
+a:hover{
+    color: green;
+}
+a:active{
+    background-color: crimson;
+}
+.texto::first-line{
+    color: aqua;
+}
+
+.texto::first-letter{
+    color: red;
+    font-size: 30px;
+}
+
+.fecha::before{
+    content: 'dia ';
+}
+.fecha::after{
+    content: " semana";
+}
+
+.texto::selection{
+    color: salmon;
+    background-color: grey;
+}

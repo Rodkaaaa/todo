@@ -1,0 +1,16 @@
+h1{
+    color: purple;
+    background-color: yellow;
+}
+p{
+    color: red;
+    background-color: silver;
+}
+h1{
+    color: rgb(66, 156, 87);
+    background-color: rgb(55, 119, 127);
+}   
+p{
+    color: rgb(233, 222, 5);
+    background-color: rgb(201, 18, 209);
+}

@@ -1,0 +1,33 @@
+/* ul{
+    list-style-type: square;
+}
+ol{
+    list-style:upper-roman;
+} */
+
+.menu{
+    clear: both;
+    float: left;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid #7c7c7c;
+}
+.menu li{
+    float: left;
+}
+.menu li a{
+    padding: .3em;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    background-color: #f4f4f4;
+    border-top: 1px solid #7c7c7c;
+    border-right: 1px solid #7c7c7c;
+    border-bottom: 1px solid #7c7c7c;
+}
+
+.menu li a:hover{
+    color: pink;
+}

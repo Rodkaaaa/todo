@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 09</title>
+    <Style>
+        form{
+            border:1px solid;
+            padding: 10px;
+            width: 50%;
+        }
+    </Style>
+</head>
+<body>
+    <h1>Rellena tu CV</h1>
+    <form action="">
+        <h2>Provincia</h2>
+        <input type="text" list="lista">
+        <h2>Fecha de nacimiento</h2>
+        <input type="date">
+        <h2>Temas de interes</h2>
+        <input type="text" list="lista2">
+        <datalist id="lista">
+            <option value="Santiago"></option>
+            <option value="La serena"></option>
+            <option value="Coquimbo"></option>
+        </datalist>
+        <datalist id="lista2">
+            <option value="Administtrador de BBDD"></option>
+            <option value="Analisis y programacion"></option>
+            <option value="Aquitectura"></option>
+            <option value="Calidad"></option>
+            <option value="Inteligencia de negocio"></option>
+        </datalist>
+        
+    </form>
+</body>
+</html>

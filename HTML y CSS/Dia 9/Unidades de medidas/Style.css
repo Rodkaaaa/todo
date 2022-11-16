@@ -1,0 +1,30 @@
+/* body{
+    font-size: 24px;
+}
+h1{
+    font-size: 30px; 
+}
+p{
+    font-size: 1em;
+} */
+
+/* h1{
+    font-size: 1in;
+}
+h2{
+    font-size: 12pc;
+}
+p{
+    font-size: 15pt;
+} */
+div{
+    width: 50%;
+    height: 20%;
+}
+p{
+    font-size: 50%;
+}
+body{
+    background: rgb(0,36,15);
+background: linear-gradient(90deg, rgba(0,36,15,0.8295693277310925) 0%, rgba(121,9,47,0.6362920168067228) 35%, rgba(0,212,255,0.5298494397759104) 100%);
+}

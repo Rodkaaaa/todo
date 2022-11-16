@@ -1,0 +1,65 @@
+/* #caja{
+    width: 300px;
+    height: 300px;
+    background-color:black ;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    color:aliceblue;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-top: 20px;
+}
+#caja2{
+    width: 300px;
+    height: 300px;
+    background-color:black ;
+    margin: 100px 100px 100px 100px;
+    color:aliceblue;
+    padding: 20px 20px 20px 20px;
+    
+}
+#caja3{
+    width: 300px;
+    height: 300px;
+    background-color:black ;
+    margin-top: 200px; 
+    margin-left: 100px;
+   
+} */
+
+/* #caja{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#caja2{
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-color: blue;
+    border-bottom-color:blue;
+    border-right-color:blue;
+    border-left-color:blue;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border: 30px inset coral ;
+} */
+
+#caja{
+    background-color: violet;
+}
+body{
+    height: 500px;
+    width: 500px;
+    background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg");
+    image-rendering: auto;
+    background-repeat: no-repeat;
+    background-position: 100%;
+}

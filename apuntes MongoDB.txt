@@ -1,0 +1,328 @@
+insertOne(): insertar solo una linea de datos.
+insertMany(): insertar varias lineas de datos y con datos incrustados.
+find(): buscar datos de una coleccion
+use {dbName}: utilizar o crear una base de datos
+{dbName}.{coleccionName}.{funtion}: Crear o seleccionar coleccion de una db
+find().pretty(): buscar ultimo dato agregado a una coleccion
+find({keyName}:${dato a buscar}): buscar datos de una coleccion por el dato solicitado ej: db.inventory.find({"stock":$type:boolean})
+db.empleados.remove({"cedula" : "123456"}); borrar
+db.empleados.drop(); droppear coleccion
+db.dropDatabase(): borrar base de datos
+db.test.update({foo: "bar"}, {$set: {test: "success!"}}, {multi: true})
+db.test.updateMany({foo: "bar"}, {$set: {test: "success!"}})
+db.patron.findOne({name:"Joe book"})._id: traer un solo documento
+var aux = db.patron.findOne({name:"Joe book"})._id: crear variable
+
+
+
+> db.address.findOne({patron_id:aux})
+{
+        "_id" : ObjectId("61ba0f524d7b6bf362cd09d4"),
+        "patron_id" : "Joe",
+        "street" : 123,
+        "state" : "CA",
+        "postal_code" : 5698
+}
+> db.address.findOne({patron_id:aux}).street
+123
+Cuando es una variable se puede buscar el contenido con un punto y el nombre del dato que se quiere buscar.
+de la variabel creada el cual esta conectada con address
+
+
+> db.plazas.deleteMany({})
+{ "acknowledged" : true, "deletedCount" : 1 } borrar todas las colecciones
+
+
+
+
+
+
+relacion uno a muchos
+ db.pantalones.find().pretty()
+{
+        "_id" : ObjectId("61ba22d44d7b6bf362cd09d8"),
+        "nombre_tienda" : "Tienda Ropa ninos",
+        "precio_bajo" : 200,
+        "precio_alto" : 600,
+        "id_plaza" : ObjectId("61ba21ca4d7b6bf362cd09d7")
+}
+{
+        "_id" : ObjectId("61ba22d44d7b6bf362cd09d9"),
+        "nombre_tienda" : "Tienda Caballeros",
+        "precio_bajo" : 450,
+        "precio_alto" : 950,
+        "id_plaza" : ObjectId("61ba21ca4d7b6bf362cd09d7")
+}
+> db.plazas.find.pretty()
+uncaught exception: TypeError: db.plazas.find.pretty is not a function :
+@(shell):1:1
+> db.plazas.find().pretty()
+{
+        "_id" : ObjectId("61ba21ca4d7b6bf362cd09d7"),
+        "nombre_plaza" : "Plasa Sol",
+        "precio_pantalones" : [
+                {
+                        "nombre_tienda" : "Tienda Ropa ninos",
+                        "precio_bajo" : 200,
+                        "precio_alto" : 600
+                },
+                {
+                        "nombre_tienda" : "Tienda Caballeros",
+                        "precio_bajo" : 450,
+                        "precio_alto" : 950
+                }
+        ]
+}
+
+
+
+
+
+> db.movie.findOne() Buscar el primer dato de la base de datos
+
+> db.movie.findOne({"Pelicula":"Star Wars"}) se le puede agregar condicion de busqueda pero solo encontrara 1
+
+> db.movie.find({"Pelicula":{$eq:"Star Wars"}}) el $eq busca los datos equivalentes a la condicion , es igual que eel find(), $eq es mas versatil , se puede convinar con mas condiciones
+
+> show collections mostrar collecciones dentro de una db
+
+> db.movie.insertOne() insertar un solo dato
+
+> db.movie.insertMany() insertar varios datos
+
+> db.movie.insert([{"Pelicula":"El salto del lobo","Genero":"Suspenso",anio:1991},{otro dato}]) inserta datos abarca el insertOne() y el insertMany()
+
+db.movie.insert([{"_id":4,"Pelicula":"Hercules",anio:1999},{"_id":5,"Pelicula":"Hercules 2",anio:2005}],{ordered:true}) el ordered true , si hay un error no se insertara los datos
+
+> db.movie.insert([{"_id":4,"Pelicula":"Hercules",anio:1999},{"_id":5,"Pelicula":"Hercules 2",anio:2005}],{ordered:false}) lo mismo que lo de arriba pero al reves
+
+
+
+
+mongoimport --db proyecto1(nombre base de datos) --collection prueba(nombre coleccion) --type csv(tipo para importar) --headerline(que tome la cabecera como llave) --file D:\Descargas\proyecto1\proyecto1.csv(sector donde se encuentra la base de datos) como importar una bbdd
+
+> db.prueba.find().count() contar cuantos datos hay en una coleccion
+
+filtros por operadores
+> db.movie.find({anio:{$gt:2000}}) $gt = mayor que, $gte = mayor igual que, $lt = menor que , $lte = menor igual que 
+
+
+ db.prueba.find({"B_mes":{$in:["2020-02-15","2020-03-15"]}}) buscar uno o mas campos relacionados con $in
+
+
+ db.prueba.find({"B_mes":{$nin:["2020-02-15","2020-03-15"]}}) no buscar uno o mas campos relacionados con $nin
+
+> db.prueba.find({$and:[{"fec_ini_cdto":{$gte:"2020-02-01"}},{"fec_ini_cdto":{$lte:"2020-02-02"}}]}) sintax $and
+
+> db.prueba.find({$or:[{"fec_ini_cdto":{$gte:"2020-02-01"}},{"fec_ini_cdto":{$lte:"2020-02-02"}}]}) sintax $or
+
+> db.prueba.find({"no_cdtos":{$not:{$lt:352}}}) sintax $not muestra los que no cumplen la condicion
+
+> db.prueba.find({$nor:[{"fec_ini_cdto":{$lte:"2020-03-01"}}]}) $nor fecha minima que podemos buscar y podemos agregar mas de una condicion
+
+> db.prueba.find({$nor:[{"fec_ini_cdto":{$lte:"2020-03-01"}},{"id_sucursal":5},{"fec_ini_cdto":{$gte:"2020-03-02"}}]}) ej de varias condiciones
+
+$not requiere un operador para negar y $nor tienen que cumplir todas las condiciones
+
+
+> db.movie.find({anio:{$exists:true}}) trae los documentos mientras sea verdadero o falso (true,false)
+
+> db.movie.find({anio:{$exists:true,$in:[1950,1987]}}) tambien se puede combinar
+{ "_id" : ObjectId("61b781e8f60f03abc4366c1b"), "Pelicula" : "El libro de las selva", "anio" : 1987 }
+{ "_id" : ObjectId("61b781e8f60f03abc4366c1c"), "Pelicula" : "La ballena azul", "anio" : 1950 }
+
+
+> db.movie.find({"anio":{$type:"double"}}) $type trae los documentos mientras type lo pida
+
+
+> db.movie.find({"Pelicula":{$regex:/Wars/}})
+{ "_id" : ObjectId("61b77e23609da9387803c067"), "Pelicula" : "Star Wars", "anio" : 1975 }
+{ "_id" : ObjectId("61b78491104ab3c67935f27d"), "Pelicula" : "Star Wars", "anio" : 1975 } sirve para buscar ciertos documentos solo usando una palabra clave, no tiene que ser 100% exacta para traer un documento
+
+> db.prueba.find({$expr:{$gt:["$no_clientes","$no_crdtos"]}}) sintax $expr, comparar dos campos en este ejemplo es (no_clientes>no_crdtos)
+
+> db.datospersonales.find({"direccion.ciudad":"edo_mex"}) buscar datos en matrices
+
+> db.movie.find({actores:{$size:4}})calcula el tamano del documento dentro de una matriz
+
+> db.movie.find({actores:{$all:["Martin","Lupita"]}}) busca dfentro de un documento las dos similitudes que se ponen en la condicion
+>  db.movie.find({$and:[{actores:"Martin"},{actores:"Lupita"}]}) el $all disminuye el codigo al $and para buscar condiciones
+
+$elemMatch busca coicidencias en entradas de matrices
+ejemplos
+> db.movie.find({"actores":{$elemMatch:{"edad":{$gt:50,$lt:60}}}})
+{ "_id" : ObjectId("61c3519e45889904686ca90e"), "Pelicula" : "El duende", "actores" : [ { "edad" : 25, "nombre" : "Mauricio" }, { "nombre" : "Juan", "edad" : 55 } ], "anio" : 2017 }
+> db.movie.find({"actores":{$elemMatch:{"edad":{$gt:25,$lt:30}}}})
+{ "_id" : ObjectId("61c3596f45889904686ca90f"), "Pelicula" : "El duende 2", "actores" : [ { "edad" : 28, "nombre" : "Mauricio" }, { "nombre" : "Luis", "edad" : 45 } ] } 
+
+
+RECORRER CON CURSOR
+> const Cursor123 = db.movie.find() transformar a constante
+> Cursor123.next() se le puede agregar parametros
+> Cursor123.hasNext() ver si hay algun documento sigueinte respondiendo con true o false
+
+
+
+
+> db.movie.find().sort({"anio":1}) sort y su sintaxis el 1 es de menor a mayor y el -1 es de mayor a menor y se puede agregar mas de un campo
+> db.movie.find().sort({"anio":-1,"Pelicula":1}) ejemplo con 2 condiciones
+
+
+> db.movie.find().sort({"anio":-1}).limit(5) limit() aplica un limite de documentos que debe mostrar
+
+> db.movie.find().sort({"anio":-1}).skip(5) skip() salta la cantidad de documentos asignados
+
+> db.movie.find().sort({"anio":-1}).skip(5).limit(1) se pueden combinar
+
+> db.movie.find({},{"_id":0}) proyeccion es la segunda condicion de find() y se usa como el select en sql (selec _id from movie), se utiliza para mostrar en pantalla lo deseado agregando la key y entre el valor 1 o 0 (true or false)
+EJEMPLO
+> db.movie.find({},{"_id":0})
+{ "Pelicula" : "Star Wars", "anio" : 1975 }
+{ "Pelicula" : "El libro de las selva", "anio" : 1987 }
+
+> db.movie.find({actores:"Martin"},{"actores.$":1}) proyeccion per para matrices se usa el signo .$ luego de la key
+EJEMPLO
+> db.movie.find({actores:"Martin"},{"actores.$":1})
+{ "_id" : 2, "actores" : [ "Martin" ] }
+
+> db.movie.find({},{"actores":{$slice:2}}) $slice sirve para mostrar cierta cantidad de datos de algun documento, sin el $slice solo se llamaria el campo actores y el campo _id.
+
+> db.movie.find({},{"actores":{$slice:1},anio:1}) se puede angregar otros datos de proyeccion para mostrar o excluir keys
+
+> db.movie.find({},{"actores":{$slice:[1,2]},anio:1}) el slice dentro de una matriz sirve , el primer dato es un skip y el segundo es la cantidad de datos a mostrar luego del skip $slice:[1=$skip,2=datos a mostrar luego del $skip]
+
+> db.movie.updateMany({Pelicula:{$in:["hawai",159]}},{$set:{anio:1988}}) con el $in se pueden incluir varios datos para el update() y el $set actualiza solo el dato  que se pide en este caso el anio
+
+> db.movie.updateOne({Pelicula:"La ballena azul"},{$inc:{anio:1}}) $inc incrementa o reta un numero > db.movie.updateOne({Pelicula:"La ballena azul"},{$inc:{anio:1= numero a restar o sumar}})'
+
+
+> db.movie.updateOne({Pelicula:"La ballena azul"},{$min:{anio:1980}}) $min actualiza un dato mientras sea menor al valor original
+
+> db.movie.updateOne({Pelicula:"La ballena azul"},{$max:{anio:1950}}) $max actualiza un dati mientras sea mayor que el valor original
+
+> db.movie.updateOne({Pelicula:"La ballena azul"},{$mul:{anio:2= valor a multiplicar}}) $mul multiplica el valor por el dato dado
+
+$set modifica datos que existen o lo agrega si no existe
+$unset elimina un campo
+
+$rename cambia el nombre de una key
+EJEMPLO
+> db.movie.updateOne({_id:3},{$rename:{"Genero":"Genero2"}})
+
+> db.movie.updateOne({Pelicula:"Star Wars 2"},{$set:{anio:1977}},{upsert:true}) upsert es el 3er argumento de update , si el dato no esxiste upsert:true crea el documuento si no existe
+
+
+> db.movie.deleteOne({_id:ObjectId("61b78491104ab3c67935f27d")}) deleteOne() elimina el primer documento que coincida con la busqueda
+> db.movie.deleteMany({_id:ObjectId("61b78491104ab3c67935f27d")}) deleteMany() elimina todos los documentos que coincidan con la busqueda
+
+
+> db.datospersonales.drop() matar una coleccion
+> db.dropDatabase() matar una base de datos
+
+> db.prueba.aggregate([ {$match:{"no_cdtos":{$gte:352}}} ]) es como un find() pero se hace como una matriz []
+
+
+> db.prueba.aggregate([
+... {$match:{"B_adeudo":"Con adeudo"}},
+... {$group:{_id:{id_sucursal= nombre nuevo:"$id_sucursal"=dato de donde se saca},clientes_adeudo:{$sum:"$no_clientes"= suma total de clientes con adeudo}}}
+... ])
+
+es como el innerjoin agrupa los datos dandole un nombre nuevo agrupandolos por id o por el dato que se necesite
+EJEMPLO
+{ "_id" : { "id_sucursal" : 15 }, "clientes_adeudo" : 987 }
+{ "_id" : { "id_sucursal" : 2 }, "clientes_adeudo" : 996 }
+{ "_id" : { "id_sucursal" : 3 }, "clientes_adeudo" : 1001 }
+{ "_id" : { "id_sucursal" : 4 }, "clientes_adeudo" : 999 }
+{ "_id" : { "id_sucursal" : 9 }, "clientes_adeudo" : 976 }
+{ "_id" : { "id_sucursal" : 11 }, "clientes_adeudo" : 986 }
+{ "_id" : { "id_sucursal" : 7 }, "clientes_adeudo" : 931 }
+{ "_id" : { "id_sucursal" : 10 }, "clientes_adeudo" : 1044 }
+{ "_id" : { "id_sucursal" : 16 }, "clientes_adeudo" : 1045 }
+{ "_id" : { "id_sucursal" : 8 }, "clientes_adeudo" : 985 }
+{ "_id" : { "id_sucursal" : 17 }, "clientes_adeudo" : 1014 }
+{ "_id" : { "id_sucursal" : 13 }, "clientes_adeudo" : 968 }
+{ "_id" : { "id_sucursal" : 14 }, "clientes_adeudo" : 1049 }
+{ "_id" : { "id_sucursal" : 5 }, "clientes_adeudo" : 939 }
+{ "_id" : { "id_sucursal" : 6 }, "clientes_adeudo" : 940 }
+{ "_id" : { "id_sucursal" : 12 }, "clientes_adeudo" : 1012 }
+{ "_id" : { "id_sucursal" : 1 }, "clientes_adeudo" : 986 }
+
+
+
+
+
+> db.prueba.aggregate([ {$match:{"B_adeudo":"Con adeudo"}}, {$group:{_id:{id_sucursal:"$id_sucursal"},clientes_adeudo:{$sum:"$no_clientes"}}}, {$sort:{"clientes_adeudo":-1}} ])
+Usar sort con aggregate([])
+EJEMPLO
+{ "_id" : { "id_sucursal" : 14 }, "clientes_adeudo" : 1049 }
+{ "_id" : { "id_sucursal" : 16 }, "clientes_adeudo" : 1045 }
+{ "_id" : { "id_sucursal" : 10 }, "clientes_adeudo" : 1044 }
+{ "_id" : { "id_sucursal" : 17 }, "clientes_adeudo" : 1014 }
+{ "_id" : { "id_sucursal" : 12 }, "clientes_adeudo" : 1012 }
+{ "_id" : { "id_sucursal" : 3 }, "clientes_adeudo" : 1001 }
+{ "_id" : { "id_sucursal" : 4 }, "clientes_adeudo" : 999 }
+{ "_id" : { "id_sucursal" : 2 }, "clientes_adeudo" : 996 }
+{ "_id" : { "id_sucursal" : 15 }, "clientes_adeudo" : 987 }
+{ "_id" : { "id_sucursal" : 1 }, "clientes_adeudo" : 986 }
+{ "_id" : { "id_sucursal" : 11 }, "clientes_adeudo" : 986 }
+{ "_id" : { "id_sucursal" : 8 }, "clientes_adeudo" : 985 }
+{ "_id" : { "id_sucursal" : 9 }, "clientes_adeudo" : 976 }
+{ "_id" : { "id_sucursal" : 13 }, "clientes_adeudo" : 968 }
+{ "_id" : { "id_sucursal" : 6 }, "clientes_adeudo" : 940 }
+{ "_id" : { "id_sucursal" : 5 }, "clientes_adeudo" : 939 }
+{ "_id" : { "id_sucursal" : 7 }, "clientes_adeudo" : 931 }
+
+
+
+
+
+
+
+> db.prueba.aggregate([ {$match:{"B_adeudo":"Con adeudo"}}, {$group:{_id:{id_sucursal:"$id_sucursal"},clientes_adeudo:{$sum:"$no_clientes"}}}, {$sort:{"clientes_adeudo":-1}},{$project:{_id:0}} ])
+
+$project es lo mismo que el segundo parametro de find()
+
+EJEMPLO
+{ "clientes_adeudo" : 1049 }
+{ "clientes_adeudo" : 1045 }
+{ "clientes_adeudo" : 1044 }
+{ "clientes_adeudo" : 1014 }
+{ "clientes_adeudo" : 1012 }
+{ "clientes_adeudo" : 1001 }
+{ "clientes_adeudo" : 999 }
+{ "clientes_adeudo" : 996 }
+{ "clientes_adeudo" : 987 }
+{ "clientes_adeudo" : 986 }
+{ "clientes_adeudo" : 986 }
+{ "clientes_adeudo" : 985 }
+{ "clientes_adeudo" : 976 }
+{ "clientes_adeudo" : 968 }
+{ "clientes_adeudo" : 940 }
+{ "clientes_adeudo" : 939 }
+{ "clientes_adeudo" : 931 }
+
+> db.prueba.aggregate([ {$match:{"B_adeudo":"Con adeudo"}}, {$group:{_id:{id_sucursal:"$id_sucursal"},clientes_adeudo:{$sum:"$no_clientes"}}}, {$sort:{"clientes_adeudo":-1}},{$project:{clientes_adeudo:1,Campo_nuevo:{$concat:["Este es un campo "," nuevo"]}}} ])
+
+de igual manera se pueden agregar campos con $concat en aggregate
+{ "_id" : { "id_sucursal" : 14 }, "clientes_adeudo" : 1049, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 16 }, "clientes_adeudo" : 1045, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 10 }, "clientes_adeudo" : 1044, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 17 }, "clientes_adeudo" : 1014, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 12 }, "clientes_adeudo" : 1012, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 3 }, "clientes_adeudo" : 1001, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 4 }, "clientes_adeudo" : 999, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 2 }, "clientes_adeudo" : 996, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 15 }, "clientes_adeudo" : 987, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 11 }, "clientes_adeudo" : 986, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 1 }, "clientes_adeudo" : 986, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 8 }, "clientes_adeudo" : 985, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 9 }, "clientes_adeudo" : 976, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 13 }, "clientes_adeudo" : 968, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 6 }, "clientes_adeudo" : 940, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 5 }, "clientes_adeudo" : 939, "Campo_nuevo" : "Este es un campo  nuevo" }
+{ "_id" : { "id_sucursal" : 7 }, "clientes_adeudo" : 931, "Campo_nuevo" : "Este es un campo  nuevo" }
+>
+
+
+
+
