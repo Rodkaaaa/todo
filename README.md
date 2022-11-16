@@ -1,3 +1,2 @@
 # Practicas
-# todo
-# todo
+# Todo lo practicado
